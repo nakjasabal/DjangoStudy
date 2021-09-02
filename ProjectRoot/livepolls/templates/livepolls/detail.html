@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 질문을 제목으로 사용함 -->
+    <h1>{{ question.question_text }}</h1>
+
+    <!-- 에러가 있는경우 메세지를 보여줌. vote() 뷰 함수의 try~except 부분에서
+    예외가 발생되면 error_message를 담아서 렌더링함. -->
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+
+    <!-- post 방식으로 livepolls:vode로 전송한다. URLconf에서 정의한 url패턴을
+    참조하면 됨.  -->
+    <form action="{% url 'livepolls:vote' question.id %}" method="post">
+    <!-- 폼을 처리하는 경우 CSRF(Cross Site Request Forgery) 공격 방어 -->
+    {% csrf_token %}    
+    <!-- 뷰 함수에서 넘겨준 객체를 통한 반복 -->
+    <!-- 
+        choice_set : Question과 Choice 테이블의 관계는 1:N 관계이고,
+        외래키로 연결되어 있는데, 자식테이블의 항목을 의미한다. 
+    -->
+    {% for choice in question.choice_set.all %}
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}"
+            value="{{ choice.id }}" />
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+    {% endfor %}
+    <input type="submit" value="Vote">    
+    </form>
+    <div style="margin-top:10px;">
+        <input type="button" onclick="location.href='../';" value="투표리스트">
+    </div>
+</body>
+</html>
