@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <h2 class="blue">템플릿 필터</h2>
+    
+    <div class="red">        
+        {{ num1 }}
+    </div>
+    <div>       
+    {#% autoescape off %#}
+        {{ engStr|linebreaks }}        
+    {#% endautoescape %#}
+    </div>
+    <div>
+        {{ hanStr }}
+    </div>
+
+
+    <h3>템플릿 필터 사용</h3>
+
+    <h4>변수 출력</h4>
+    숫자: {{ num1 }}, {{ num2 }} <br>
+    한글: {{ hanStr }} <br>
+    영어: {{ engStr }}
+
+    <h4>lower : 소문자로 변경</h4>
+    {{ engStr|lower }} 
+
+    <h4>escape 및 linebreaks : 특수문자 이스케이프 및 줄바꿈</h4>
+    <!-- < 를 &lt; 로 바꿈 -->
+    {{ hanStr|escape|linebreaks }}
+
+    <h4>truncatewords : 단어 단위로 자르기</h4>
+    {{ hanStr|truncatewords:3 }}
+
+    <h4>truncatechars : 문자 단위로 자르기</h4>
+    {{ hanStr|truncatechars:3 }}
+
+    <h4>default : 디폴트값 지정</h4>    
+    {{ noStr|default:"값없음" }}
+
+    <h4>length : 문자열의 길이</h4>
+    {{ engStr|length }}
+
+    <h4>striptags : HTML태그를 모두 제거</h4>
+    {{ engStr|striptags }}
+
+    <h4>복수형 접미사 : pluralize</h4>
+    1일때 : {{ num1|pluralize }}, 
+    100일때(기본) : {{ num2|pluralize }}, 
+    100일때(커스텀) : {{ num2|pluralize:"sss" }}
+
+    <h4>add : 덧셈결과</h4>
+    {{ num1|add:"2" }}, 
+    {{ num2|add:"2" }}, 
+    {{ engStr|add:"2" }}
+
+    <h4>HTML 태그 렌더링하기</h4> 
+    <!-- 장고는 escape 기능이 기본으로 켜져있다. 만약 이 기능을 끄고 HTML태그가 렌더링된 형태로 출력되게 하고 싶다면 아래와 같이 하면된다.  -->
+    {% autoescape off %}
+    {{ engStr  }}
+    {% endautoescape %}
+</body>
+</html>

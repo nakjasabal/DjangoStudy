@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Form 클래스 사용하기</h2>
+
+<!-- 
+{ {form} } 구문을 통해 HTML의 <label>, <input> 태그로 표현된다. 
+그외 3가지 형태가있다. 
+{ {form.as_table} } : <tr> 태그로 감싸서 렌더링한다. 
+{ {form.as_p} } : <p> 태그로 감사서 렌더링한다. 
+{ {form.as_ul} } : <li> 태그로 감싸서 렌더링한다. 
+ -->
+
+
+<form method="POST">
+    {% csrf_token %}
+    <table border="1">
+    {{ form.as_table }}    
+    </table>
+    <input type="submit" value="전송하기">
+</form>
+{% endblock %}

@@ -27,5 +27,6 @@ urlpatterns = [
 
     path('template.filter/', views.templateFilter), #템플릿 필터
     path('template.tag/', views.templateTag), #템플릿 태그
-    path('form.create/', views.formCreate, name='formCreate'), 
+    path('form.create/', views.formCreate, name='formCreate'),  
+    path('thanks/', views.thanks),  
 ]

@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{font-size:20px;}
+    </style>    
+    <!-- css 사용하기 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <h2>static 사용하기</h2>
+    <!-- 이미지 사용하기 -->
+    <img src="{% static 'apple.png' %}" alt="">
+    <img src="/static/mango.png" alt="">
+
+    <h2>사용자 폴더 사용하기-출력되지 않음</h2>
+    <img src="/images/winter.png" alt="">
+   
+
+    <h2>템플릿 태그</h2>
+    <h3>for 기본</h3>
+    {% for b in books %}
+        <li>{{ b.name }}</li>
+    {% endfor %}
+
+    <h3>for...empty</h3>
+    {% for h in hobbys %}
+        <li>{{ h.name }} </li>
+    {% empty %}
+        <li>내용없음</li>
+    {% endfor %}
+
+    <h3>for에서 사용되는 변수</h3>
+    {% for b in books %}
+        <li>
+            {{ forloop.counter }} -
+            {{ forloop.counter0 }} -
+            {{ forloop.revcounter }} -
+            {{ forloop.revcounter0 }} -
+            {{ forloop.first }} -
+            {{ forloop.last }} -
+            {{ forloop.parentloop }} {# 아무것도 안나옴 #}
+        </li>
+    {% endfor %}
+
+    <h3>중첩된 for문</h3> 
+    {% for f in favorites %}
+        {% for b in books %}
+        <li>
+            <!-- 부모의 속성이 출력된다.  -->
+            {{ forloop.parentloop }}
+        </li>
+        {% endfor %}
+    {% endfor %}
+
+
+    
+    <h3>일반적인 for문 사용하기</h3>
+    {% for i in iVar %}
+        {{ i }} <br>
+    {% endfor %}
+
+
+
+    <h2>if문</h2>
+    {% if hobbys %}
+        hobbys의 갯수 : {{ hobbys|length }}
+    {% elif books %}
+        books의 갯수 : {{ books|length }}
+    {% else %}
+        모두 False임
+    {% endif %}
+    <br>
+    {% if num > 50 and num < 200 %}
+        num 은 50보다 크다
+    {% else %}
+        num 은 50보다 작다
+    {% endif %}
+     
+
+    <h2>with</h2>
+    {% with total=books|length %}
+        with블럭안 : {{ total }} <br>
+    {% endwith %}
+
+    with블럭밖 : {{ total }}
+
+   
+</body>
+</html>
