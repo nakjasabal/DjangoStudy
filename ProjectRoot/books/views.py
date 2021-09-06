@@ -8,7 +8,7 @@ from django.views.generic import DetailView
 from books.models import Book, Author, Publisher
 
 
-# TemplateView 사용 : books 애플리케애션의 첫화면을 출력
+# TemplateView 사용 : books 애플리케이션의 첫화면을 출력
 class BooksModelView(TemplateView):
     # TemplateView를 사용하는 경우 template_name 클래스변수를 오버라이딩 해야한다.
     template_name = 'books/index.html' # 템플릿 파일 지정

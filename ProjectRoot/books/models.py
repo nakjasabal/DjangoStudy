@@ -9,6 +9,7 @@ class Book(models.Model):
     # 1:N관계. 출판사와 책의 관계. 책은 한 출판사에서만 발행된다. 
     # CASCADE 옵션은 오라클과 동일하게 부모레코드가 삭제될때 자식까지 같이 삭제된다. 
     publisher = models.ForeignKey('Publisher', on_delete=models.CASCADE) 
+    #publication_date = models.DateTimeField('date published') #일종의 설명문
     publication_date = models.DateField()
 
     def __str__(self):

@@ -65,11 +65,17 @@ ROOT_URLCONF = 'FirstProject.urls'
 '''
 템플릿 파일에 대한 설정으로 템플릿 파일을 찾을때는 
 TEMPLATES, INSTALLED_APPS 에서 지정된 앱의 디렉토리를 검색한다. 
+
+
+첨에 할때는 DIRS : [] 이상태로 개발했음. 
+차후 템플릿 경로를 변경하기 위해 아래 2가지 해봤는데 별다른 성과없음
+BASE_DIR / 'templates'
+#os.path.join(BASE_DIR, 'templates')
 '''
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'], #os.path.join(BASE_DIR, 'templates')
+        'DIRS': [os.path.join(BASE_DIR, 'FirstProject/templates')], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,10 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'basic.html' %}
 
 <title>{% block title %}Books Application Site{% endblock %}</title>
 
 {% block sidebar %}
-{{ block.super }}
-<ul>
+
+<!-- 부모템플릿인 basic.html에서 정의한 하위에서 재사용함. -->
+{{ block.super }} 
+<ol>
     <li><a href="/books/">Books Home</a></li>
-</ul>
+</ol>
+
 {% endblock%}

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include # 모듈 임포트
-from livepolls import views
+from . import views
 
 '''
 path() 함수 : route, view 2개의 필수인자와, kwargs, name 2개의 선택인자를 받음.
@@ -13,7 +13,8 @@ path() 함수 : route, view 2개의 필수인자와, kwargs, name 2개의 선택
         에서 사용한다. 
 '''
 urlpatterns = [
-    path('', views.main, name='main'), # http://localhost:8000/ 첫화면
+    #path('', views.main, name='main'), # http://localhost:8000/ 첫화면 - 이건 내가 만들어본거
+    path('', views.HomeView.as_view(), name='home'), # 책에 있는 내용
     path('admin/', admin.site.urls), # 관리자모드
 
     #livepolls앱 : 1개의 urls파일로 만드는 경우
@@ -25,10 +26,10 @@ urlpatterns = [
     #livepolls앱 : 2개의 urls파일로 만드는 경우
     path('livepolls/', include('livepolls.urls')), # 투표 애플리케이션 기본
 
-    path('template.filter/', views.templateFilter), #템플릿 필터
-    path('template.tag/', views.templateTag), #템플릿 태그
-    path('form.create/', views.formCreate, name='formCreate'),  
-    path('thanks/', views.thanks),  
+    #path('template.filter/', views.templateFilter), #템플릿 필터
+    #path('template.tag/', views.templateTag), #템플릿 태그
+    #path('form.create/', views.formCreate, name='formCreate'),  
+    #path('thanks/', views.thanks),  
 
     path('books/', include('books.urls')), # 도서관리 애플리케이션
 ]
