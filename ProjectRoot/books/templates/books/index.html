@@ -1,0 +1,17 @@
+{% extends 'base_books.html' %}
+
+{% block content %}
+    <h2>Books Management System</h2>
+    <ul>
+    {% for modelname in model_list %}
+        <!-- add, lower 템플릿 필터 사용. 문자열을 소문자로 변경하고
+        필요한 문자열을 추가한다. 만약 모델명이 Xyz라면 book:Xyz_list
+        가 된다.  -->
+        {% with "books:"|add:modelname|lower|add:"_list" as urlvar%}
+        <li>
+            <a href="{% url urlvar %}">{{ modelname }}</a>
+        </li>
+        {% endwith %}
+    {% endfor %}
+    </ul>
+{% endblock content %}

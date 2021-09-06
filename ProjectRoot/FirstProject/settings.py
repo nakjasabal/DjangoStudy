@@ -11,9 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent #parent를 하나 지웠더니 프로젝트가 기본폴더가 되씸
+            # 쉬바..근데 다른게 안됨...ㅋ
 
 
 # Quick-start development settings - unsuitable for production
@@ -67,7 +69,7 @@ TEMPLATES, INSTALLED_APPS 에서 지정된 앱의 디렉토리를 검색한다.
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'], #os.path.join(BASE_DIR, 'templates')
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,0 +1,20 @@
+{% extends 'base_books.html' %}
+<!-- 
+    object.authors.all : object 에 연결된 authors 모두라는 의미.
+    if not forloop.last : 책의 저자가 여러명일수 있으므로 반복의 마지막이 아닌경우
+        콤마를 출력한다. 
+ -->
+{% block content %}
+    <h2>{{ object.title }}</h2>
+    <ul>
+        <li>
+            Authors : 
+            {% for author in object.authors.all %}   
+                {{ author }}
+                {% if not forloop.last %}, {% else %}{% endif%}
+            {% endfor %}
+        </li>
+        <li>Publisher : {{ object.publisher }}</li>
+        <li>Publication date : {{ object.publicaton_date }}</li>
+    </ul>
+{% endblock content %}

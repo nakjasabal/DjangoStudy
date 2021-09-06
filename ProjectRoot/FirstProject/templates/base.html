@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    경로:ProjectRoot\FirstProject\templates\base.html <br>
+    <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li><a href="/">Project Home</a></li>
+            <li><a href="/admin/">Admin</a></li>
+        </ul>
+        {% endblock%}
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

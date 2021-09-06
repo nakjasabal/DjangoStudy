@@ -29,4 +29,6 @@ urlpatterns = [
     path('template.tag/', views.templateTag), #템플릿 태그
     path('form.create/', views.formCreate, name='formCreate'),  
     path('thanks/', views.thanks),  
+
+    path('books/', include('books.urls')), # 도서관리 애플리케이션
 ]
