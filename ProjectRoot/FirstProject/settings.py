@@ -142,6 +142,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+######### FirstProject/static -> 이렇게 하믄 프로젝트 레벨로 설정될듯 하네.
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

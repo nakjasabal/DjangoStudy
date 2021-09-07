@@ -4,21 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>프로젝트 레벨의 템플릿</title>
+    <title>{% block title %}프로젝트 레벨의 템플릿{% endblock %}</title>
     <link rel="stylesheet" href="">
 </head>
 <body>
     경로:ProjectRoot\FirstProject\templates\project_base.html <br>
-    
-    <h1>FirstProject 하위임</h1>
-    <h2>여기는 Main</h2>
-    <ul>
-        <li><a href="./admin/" target="_blank">관리자모드</a></li>
-        <li><a href="./livepolls/" target="_blank">투표 애플리케이션 바로가기</a></li>
-        <li><a href="./template.filter/" target="_blank">템플릿 필터 바로가기</a></li>
-        <li><a href="./template.tag/" target="_blank">템플릿 태그 바로가기</a></li>
-        <li><a href="./form.create/" target="_blank">폼 사용하기</a></li>
-        <li><a href="./books/" target="_blank">책 애플리케이션 바로가기</a></li>
-    </ul>
+
+    {% block content %}{% endblock %} 
 </body>
 </html>

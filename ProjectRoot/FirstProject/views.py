@@ -9,4 +9,4 @@ class HomeView(TemplateView):
         context['app_list'] = ['livepolls', 'books']
         return context
 
-        
+         

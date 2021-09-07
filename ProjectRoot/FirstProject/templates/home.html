@@ -1,1 +1,27 @@
-나는 home.html
+{% extends "project_base.html" %}
+
+{% block title %}home템플릿{% endblock %}
+
+{% block content %}
+    <h1>FirstProject 하위임</h1>
+
+    <h2>Django가 만든 메뉴</h2>
+    <ol>
+    {% for appname in app_list %}
+        {% with appname|add:":index" as urlvar %}        
+        <li><a href="{% url urlvar %}">{{ appname }} => {{ urlvar }}</a></li>
+        {% endwith %}
+    {% endfor %}
+    </ol>
+
+    <h2>내가 만든 메뉴</h2>
+    <ul>
+        <li><a href="./admin/" target="_blank">관리자모드</a></li>
+        <li><a href="./livepolls/" target="_blank">투표 애플리케이션 바로가기</a></li>
+        <li><a href="./template.filter/" target="_blank">템플릿 필터 바로가기</a></li>
+        <li><a href="./template.tag/" target="_blank">템플릿 태그 바로가기</a></li>
+        <li><a href="./form.create/" target="_blank">폼 사용하기</a></li>
+        <li><a href="./books/" target="_blank">책 애플리케이션 바로가기</a></li>
+    </ul>
+{% endblock content %} 
+    
